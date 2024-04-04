@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locked In</title>
+  <link rel="stylesheet" href="navBar.css">
+  <link rel="stylesheet" href="universalStyles.css">
+  <link rel="stylesheet" href="gradientbackGround.css">
+  <link rel="stylesheet" href="buttons.css">
+</head>
 <body>
+  <div class="navbarFlexboxLEFT">
+    <div class="navbarButtons"><a href="homePage.html">Home Page</a></div>
+    <div style="flex: 1; justify-content: flex-end">
+      <div class="navbarFlexboxRIGHT">
+        <div class="navbarButtons"><a href="written_works_page.html">Workflow</a></div>
+        <div class="navbarButtons"><a href="settings_page.html">Settings</a></div>
+        <div class="navbarButtons"><a href="recorder.html">Camera View</a></div>
+      </div>
+    </div>
+  </div>
 
-<button id="startButton">Start Recording</button>
-<button id="stopButton" disabled>Stop Recording</button>
-<video id="video" width="320" height="240" autoplay muted></video>
-<video id="recordedVideo" width="320" height="240" controls></video>
+<button id="startButton" class="navbarButtons">Start Recording</button>
+<button id="stopButton" disabled class="navbarButtons">Stop Recording</button>
+<video id="video" width="640" height="480" autoplay muted></video>
+<video id="recordedVideo" width="640" height="480" controls></video>
 
 <script>
   const startButton = document.getElementById('startButton');
