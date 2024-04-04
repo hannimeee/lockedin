@@ -1,0 +1,59 @@
+*,
+::before
+::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white
+  }
+
+  .navbarFlexboxLEFT {
+    /* FLEXBOX */
+    display: flex;
+    justify-content: flex-start; /* along the main axis  horizontally*/
+}
+
+.navbarFlexboxRIGHT {
+    /* FLEXBOX */
+    display: flex;
+    justify-content: flex-end; /* along the main axis  horizontally*/
+}
+
+.navbarButtons {
+    font-size: 1.2rem;
+    color: white;
+    background-color:rgb(24, 26, 26) ;
+
+    /* BOX MODEL */
+    padding: 4px 8px;
+    border: 0.01px solid rgb(148, 144, 144);
+    border-radius: 7.8px;
+    margin: 7px 4.5px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 23px;
+}
+
+.navbarButtons:hover {
+    background-color: rgb(190, 138, 145);
+    opacity: 0.87; 
+    cursor: pointer;
+    transform: translateY(5px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbarButtons:active {
+    opacity: 0.65; /*not working rn*/
+}
+
+
+
+
+
