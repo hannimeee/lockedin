@@ -59,7 +59,7 @@ body {
 .timerDisplay {
   position: relative;
   width: 110%;
-  background-color: rgb(41, 39, 39);
+  background-color: rgb(24, 26, 26);
   left: -5%;
   padding: 25px 0;
   font-family: "Roboto Mono", monospace;
