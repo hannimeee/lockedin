@@ -27,18 +27,19 @@ a {
 }
 
 .navbarButtons {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: white;
     background-color:rgb(24, 26, 26) ;
 
     /* BOX MODEL */
-    padding: 4px 8px;
+    padding: 6px 10px;
     border: 0.01px solid rgb(148, 144, 144);
     border-radius: 7.8px;
     margin: 7px 4.5px;
     text-align: center;
     vertical-align: middle;
     line-height: 23px;
+    transition: 0.75s;
 }
 
 .navbarButtons:hover {

@@ -1,5 +1,4 @@
-body {
-    background-color: rgb(24, 26, 26);
-    font-family: "Inconsolata", monospace;
-    margin: 0 
-  }
+:root {
+    --text-primary: #b6b6b6;
+    --text-secondary: #b6b6b6
+}

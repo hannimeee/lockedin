@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dissection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locked In</title>
   <link rel="stylesheet" href="navBar.css">
   <link rel="stylesheet" href="universalStyles.css">
+  <link rel="stylesheet" href="gradientbackGround.css">
+  <link rel="stylesheet" href="buttons.css">
 </head>
 <body>
 
@@ -20,7 +26,37 @@
     </div>
   </div>
 
-  <div class="content"><p class="dissectionText">DISSECTION</p></div>
+  <div class="timerContainer">
+    <div class="timerDisplay" id="timerDisplay">00:00:00:000</div>
+    <div class="buttons">
+      <button id="buttons">Pause</button>
+      <button id="buttons">Start</button>
+      <button id="buttons">Reset</button>
+    </div>
+  </div>
+
+  <div class="containerFACE">
+    <div class="face-efficiency-percentage">00.00%</div>
+  </div>
+
+  <script scr="timerScript.js">
+    let [hours, minutes, seconds, milleseconds] = [0,0,0,0];
+    let timerDisplay = document.getElementById("timerDisplay");
+
+    function timer() {
+      milleseconds++;
+      if (milleseconds == 1000){
+        seconds++;
+        if (seconds == 60) {
+          minutes++
+          if (minutes == 60) {
+            hours++
+          }
+        }
+      }
+    }
+
+  </script>
 
 
 </body>

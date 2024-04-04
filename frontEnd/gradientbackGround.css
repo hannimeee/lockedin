@@ -1,0 +1,65 @@
+:root {
+    --gradientButton: linear-gradient(
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f
+    );
+  }
+  
+body {
+    /* background-image: var(--gradient);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 400%;
+    animation: bg-animation 5s infinite alternate; */
+    background-color: black;
+  }
+
+.navbarButtons:hover {
+    background-image: var(--gradientButton);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 400%;
+    animation: bg-animation 5s infinite alternate;
+    opacity: 0.87; 
+    cursor: pointer;
+  }
+
+@keyframes bg-animation {
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+.dissectionText {
+    margin: 0 0 .5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 3rem;
+    color: white;
+    line-height: .8;
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    border:1px solid rgb(148, 144, 144);
+    padding: 47px 63px;
+    background-color: rgb(24, 26, 26);
+  }
+  
+  .content {
+    background-color: rgb(24, 26, 26);
+    top: 50%;
+    transform: translate(0,75%);
+    display: flex;
+    height: 200px; 
+    max-width: 400px;
+    padding: 30px 40px;
+    margin: auto; 
+    padding: 34px 60px;
+    box-shadow: 0 0 3em rgba(0,0,0,.15);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+  }

@@ -1,0 +1,95 @@
+:root {
+    --gradientButton: linear-gradient(
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f
+    );
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgb(24, 26, 26);
+  }
+
+.containerFACE {
+    background-color: rgb(41, 39, 39);
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    width: min(90%, 31.25em);
+    padding: 3.75em 0;
+    border-radius: 0.8em;
+    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  }
+
+.timerContainer {
+    background-color: rgb(41, 39, 39);
+    position: absolute;
+    left: 56%;
+    top: 21%;
+    width: min(90%, 31.25em);
+    padding: 3.75em 0;
+    border-radius: 0.8em;
+    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  }
+
+.timerDisplay {
+    position: relative;
+    width: 110%;
+    background-color: rgb(24, 26, 26);
+    left: -5%;
+    padding: 1em 0;
+    font-family: "Roboto Mono", monospace;
+    color: #f0f9ff;
+    font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0.3em;
+    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  }
+
+.face-efficiency-percentage {
+    position: relative;
+    width: 110%;
+    background-color: rgb(24, 26, 26);
+    left: -5%;
+    padding: 1em 0;
+    font-family: "Roboto Mono", monospace;
+    color: #f0f9ff;
+    font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0.3em;
+    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  }
+
+.buttons {
+    width: 80%;
+    margin: 3.8em auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+.buttons button {
+    font-size: 1.12em;
+    background-color: rgb(24, 26, 26);
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+  }
+
+#start-timer {
+    background-color: rgb(24, 26, 26);
+    color: white;
+  }
