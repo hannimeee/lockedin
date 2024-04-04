@@ -76,11 +76,15 @@
     // }
 
     function startTimer_onClick() {
+    if (milleseconds == 0) { // Timer not running, start it
+      timer = setInterval(stopwatchFunction, 10);
+    } else { // Timer running, reset it
       clearInterval(timer);
-    [milleseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
-    timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
-    timer = setInterval(stopwatchFunction, 10);
-}
+      [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
+      timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
+      timer = setInterval(stopwatchFunction, 10);
+    }
+  }
 
     function pauseTimer() {
       clearInterval(timer);

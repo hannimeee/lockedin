@@ -58,6 +58,8 @@
     transition: 0.25s;
     margin: 10px 10px;
     position: relative; /* Add relative positioning */
+    overflow: hidden; /* Add overflow hidden */
+    transition: transform 0.25s ease, filter 0.25s ease;
   }
   
   .navbarButtons:hover::before,
@@ -76,6 +78,7 @@
     );
     border-radius: 0.5em; /* Use em for consistency */
     animation: rotation 5s linear infinite;
+    transform: translateY(5px);
   }
   
   .navbarButtons:hover::after {
