@@ -1,96 +1,156 @@
 :root {
-    --gradientButton: linear-gradient(
-    #d65db1,
-    #ff6f91,
-    #ff9671,
-    #ffc75f
-    );
-  }
+  --clr-1: #052b2f;
+  --clr-2: #073438;
+  --clr-3: #0e4b50;
+  --clr-4: #2d8f85;
+  --clr-5: #637c54;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% { --gradient-angle: 0deg;}
+  100% { --gradient-angle: 360deg;}
+}
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background-color: rgb(24, 26, 26);
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(24, 26, 26);
+}
 
 .containerFACE {
-    background-color: rgb(41, 39, 39);
-    position: absolute;
-    left: 25%;
-    top: 25%;
-    width: min(90%, 31.25em);
-    padding: 3.75em 0;
-    border-radius: 0.8em;
-    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
-  }
+  background-color: rgb(41, 39, 39);
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: min(90%, 31.25em);
+  padding: 3.75em 0;
+  border-radius: 0.8em;
+  box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  z-index:-1;
+}
 
 .timerContainer {
-    background-color: rgb(41, 39, 39);
-    position: absolute;
-    left: 56%;
-    top: 21%;
-    width: min(90%, 31.25em);
-    padding: 3.75em 0;
-    border-radius: 0.8em;
-    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
-  }
+  background-color: rgb(41, 39, 39);
+  position: absolute;
+  left: 56%;
+  top: 21%;
+  width: min(90%, 31.25em);
+  padding: 3.75em 0;
+  border-radius: 0.8em;
+  box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.timerContainer ::before,
+.timerContainer ::after {
+  z-index: -0.7;
+}
 
 .timerDisplay {
-    position: relative;
-    width: 110%;
-    background-color: rgb(24, 26, 26);
-    left: -5%;
-    padding: 25px 0;
-    font-family: "Roboto Mono", monospace;
-    color: #f0f9ff;
-    font-size: 2.5em;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 0.3em;
-    border: 10px solid red
-    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
-  }
+  position: relative;
+  width: 110%;
+  background-color: rgb(41, 39, 39);
+  left: -5%;
+  padding: 25px 0;
+  font-family: "Roboto Mono", monospace;
+  color: #f0f9ff;
+  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.5rem; /* Use rem instead of em */
+  box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+}
+
+.timerDisplay::before,
+.timerDisplay::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1; /* Set a lower z-index than .timerDisplay */
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3));
+  border-radius: 0.5rem; /* Use rem instead of em */
+  animation: rotation 5s linear infinite;
+}
+
+.timerDisplay::after {
+  filter: blur(3.5rem);
+}
+
 
 .face-efficiency-percentage {
-    position: relative;
-    width: 110%;
-    background-color: rgb(24, 26, 26);
-    left: -5%;
-    padding: 1em 0;
-    font-family: "Roboto Mono", monospace;
-    color: #f0f9ff;
-    font-size: 2.5em;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 0.3em;
-    box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
-  }
+  position: relative;
+  width: 110%;
+  background-color: rgb(24, 26, 26);
+  left: -5%;
+  padding: 1em 0;
+  font-family: "Roboto Mono", monospace;
+  color: #f0f9ff;
+  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.3em;
+  box-shadow: 0 1.97em 3.75em rgba(0, 0, 0, 0.2);
+}
+
+.face-efficiency-percentage::before,
+.face-efficiency-percentage::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1; /* Set a lower z-index than .timerDisplay */
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3));
+  border-radius: 0.5rem; /* Use rem instead of em */
+  animation: rotation 5s linear infinite;
+}
+
+.face-efficiency-percentage::after {
+  filter: blur(3.5rem);
+}
 
 .buttons {
-    width: 80%;
-    margin: 3.8em auto 0 auto;
-    display: flex;
-    justify-content: space-around;
-  }
+  width: 80%;
+  margin: 3.8em auto 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
 
 .buttons button {
-    font-size: 1.12em;
-    background-color: rgb(24, 26, 26);
-    color: white;
-    border: none;
-    font-family: "Poppins", sans-serif;
-    border-radius: 0.5em;
-    padding: 1em 1.5em;
-    cursor: pointer;
-    outline: none;
-  }
+  font-size: 1.12em;
+  background-color: rgb(24, 26, 26);
+  color: white;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.5em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  outline: none;
+}
 
 #start-timer {
-    background-color: rgb(24, 26, 26);
-    color: white;
-  }
+  background-color: rgb(24, 26, 26);
+  color: white;
+}

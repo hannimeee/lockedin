@@ -27,7 +27,7 @@
   </div>
 
   <div class="timerContainer">
-    <div class="timerDisplay" id="timerDisplay">00:00:00:000</div>
+    <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
     <div class="buttons">
       <button id="buttons">Pause</button>
       <button id="buttons" onclick="startTimer_onClick()">Start</button>
@@ -53,14 +53,12 @@
       minutes = Math.trunc(milleseconds/(100*60))%60; // minute
       hours = Math.trunc(milleseconds/(100*60*60)); //hour
 
-      ms = milleseconds == 0 ? "000": milleseconds; 
-      ms = milleseconds%100 < 10 ? "0" + milleseconds: milleseconds; 
-      s = seconds < 10 ? "0" + seconds: seconds; 
-      m =minutes < 10 ? "0" + minutes: minutes;
-      h = hours < 10 ? "0" + hours: hours; 
+      ms = milleseconds % 1000;
+      s = seconds < 10 ? "0" + seconds : seconds;
+      m = minutes < 10 ? "0" + minutes : minutes;
+      h = hours < 10 ? "0" + hours : hours;
 
-
-      timerDisplay.innerHTML = h + ":" + m + ":" +  s + ":" + ms%100;
+      timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms%100).toString().padStart(2, '0'));
     }
 
     // function stopwatchFunction() {
