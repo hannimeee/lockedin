@@ -30,7 +30,7 @@
     <div class="timerDisplay" id="timerDisplay">00:00:00:000</div>
     <div class="buttons">
       <button id="buttons">Pause</button>
-      <button id="buttons">Start</button>
+      <button id="buttons" onclick="startTimer_onClick()">Start</button>
       <button id="buttons">Reset</button>
     </div>
   </div>
@@ -40,20 +40,47 @@
   </div>
 
   <script scr="timerScript.js">
-    let [hours, minutes, seconds, milleseconds] = [0,0,0,0];
+    timer = null;
+    // let [milleseconds, seconds, minutes, hours] = [0,0,0,0];
+    let [milleseconds, seconds, minutes, hours] = [0,0,0,0];
     let timerDisplay = document.getElementById("timerDisplay");
 
-    function timer() {
+
+    function stopwatchFunction() {
       milleseconds++;
-      if (milleseconds == 1000){
-        seconds++;
-        if (seconds == 60) {
-          minutes++
-          if (minutes == 60) {
-            hours++
-          }
-        }
-      }
+       // ms
+      seconds = Math.trunc(milleseconds/100)%60;//s
+      minutes = Math.trunc(milleseconds/(100*60))%60; // minute
+      hours = Math.trunc(milleseconds/(100*60*60)); //hour
+
+      ms = milleseconds == 0 ? "000": milleseconds; 
+      ms = milleseconds%100 < 10 ? "0" + milleseconds: milleseconds; 
+      s = seconds < 10 ? "0" + seconds: seconds; 
+      m =minutes < 10 ? "0" + minutes: minutes;
+      h = hours < 10 ? "0" + hours: hours; 
+
+
+      timerDisplay.innerHTML = h + ":" + m + ":" +  s + ":" + ms%100;
+    }
+
+    // function stopwatchFunction() {
+    //   milleseconds++;
+    //   if (milleseconds == 100) {
+    //     seconds++
+    //     if (seconds == 60) {
+    //       minutes++
+    //       if (minutes == 60) {
+    //         hours++
+    //       }
+    //     }
+    //   }
+    //   timerDisplay.innerHTML = hours + ":" + minutes + ":" +  seconds + ":" + milleseconds%1000
+    // }
+
+    function startTimer_onClick () {
+      if (milleseconds !== null)
+        clearInterval(timer);
+      timer = setInterval(stopwatchFunction, 10);
     }
 
   </script>
