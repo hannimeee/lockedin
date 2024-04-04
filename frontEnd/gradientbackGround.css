@@ -1,12 +1,3 @@
-:root {
-    --gradientButton: linear-gradient(
-    #d65db1,
-    #ff6f91,
-    #ff9671,
-    #ffc75f
-    );
-  }
-  
 body {
     /* background-image: var(--gradient);
     background-repeat: no-repeat;

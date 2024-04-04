@@ -29,9 +29,9 @@
   <div class="timerContainer">
     <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
     <div class="buttons">
-      <button id="buttons">Pause</button>
+      <button id="buttons" onclick="pauseTimer()">Pause</button>
       <button id="buttons" onclick="startTimer_onClick()">Start</button>
-      <button id="buttons">Reset</button>
+      <button id="buttons" onclick="resetTimer()">Reset</button>
     </div>
   </div>
 
@@ -75,11 +75,33 @@
     //   timerDisplay.innerHTML = hours + ":" + minutes + ":" +  seconds + ":" + milleseconds%1000
     // }
 
-    function startTimer_onClick () {
-      if (milleseconds !== null)
-        clearInterval(timer);
-      timer = setInterval(stopwatchFunction, 10);
+    function startTimer_onClick() {
+      clearInterval(timer);
+    [milleseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
+    timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
+    timer = setInterval(stopwatchFunction, 10);
+}
+
+    function pauseTimer() {
+      clearInterval(timer);
+
+      seconds = Math.trunc(milleseconds/100)%60;//s
+      minutes = Math.trunc(milleseconds/(100*60))%60; // minute
+      hours = Math.trunc(milleseconds/(100*60*60)); //hour
+
+      ms = milleseconds % 1000;
+      s = seconds < 10 ? "0" + seconds : seconds;
+      m = minutes < 10 ? "0" + minutes : minutes;
+      h = hours < 10 ? "0" + hours : hours;
+
+      timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms%100).toString().padStart(2, '0'));
     }
+
+    function resetTimer() {
+      clearInterval(timer);
+      [milleseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
+      timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
+    }   
 
   </script>
 

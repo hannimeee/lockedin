@@ -30,8 +30,8 @@ body {
 .containerFACE {
   background-color: rgb(41, 39, 39);
   position: absolute;
-  left: 25%;
-  top: 25%;
+  left: 18.2%;
+  top: 35%;
   width: min(90%, 31.25em);
   padding: 3.75em 0;
   border-radius: 0.8em;
@@ -43,7 +43,7 @@ body {
   background-color: rgb(41, 39, 39);
   position: absolute;
   left: 56%;
-  top: 21%;
+  top: 30.1%;
   width: min(90%, 31.25em);
   padding: 3.75em 0;
   border-radius: 0.8em;
@@ -138,7 +138,9 @@ body {
   justify-content: space-around;
 }
 
+
 .buttons button {
+  font-weight: 550;
   font-size: 1.12em;
   background-color: rgb(24, 26, 26);
   color: white;
@@ -148,6 +150,25 @@ body {
   padding: 1em 1.5em;
   cursor: pointer;
   outline: none;
+  transition: 0.25s;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3));
+  border-radius: 0.5rem; /* Use rem instead of em */
+  animation: rotation 5s linear infinite;
+  transform: translateY(3px);
+}
+
+.buttons button:hover::after {
+  filter: blur(3.5rem);
 }
 
 #start-timer {
