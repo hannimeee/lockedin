@@ -153,12 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const startButton = document.getElementById('startButton');
   const pauseButton = document.getElementById('pauseButton');
   const resetButton = document.getElementById('resetButton');
+  let isDetectionStarted = false; // Track if detection has started
 
   startButton.addEventListener('click', async () => {
     pauseButton.disabled = false;
     startButton.disabled = true;
     resetButton.disabled = true; // Disable reset button when detection starts
     startRecordingWithFaceDetection();
+    isDetectionStarted = true; // Set detection started flag to true
+    startButton.textContent = 'Resume'; // Change button text to 'Resume'
   });
 
   pauseButton.addEventListener('click', () => {
@@ -182,10 +185,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+  
   resetButton.addEventListener('click', () => {
     faceDetectedCount = 0;
     faceNotDetectedCount = 0;
     updateLockedInPercentage();
+    startButton.textContent = 'Start'; // Change button text back to 'Start' after reset
   });
 });
 
