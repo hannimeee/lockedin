@@ -40,8 +40,21 @@ video {
 /* Style for the timer container */
 .timerContainer {
     position: fixed; /* Position the timer container relative to the viewport */
-    top: 90%; /* Position the container 50% from the top of the viewport */
-    left: 30%; /* Position the container 50% from the left of the viewport */
+    top: 15%; /* Position the container 50% from the top of the viewport */
+    left: 35%; /* Position the container 50% from the left of the viewport */
     transform: translateX(50%); /* Move the container to the right by 50% of its width */
     z-index: 9999; /* Ensure the timer appears above other elements */
+}
+
+.timerDisplay {
+    /* Positioning */
+    position: absolute; /* Use absolute positioning */
+    top: 400%; /* Align to the vertical center of the screen */
+    left: 50%; /* Align to the horizontal center of the screen */
+    transform: translate(-50%, -50%); /* Move the box back by half of its width and height */
+    
+    /* Style */
+    font-family: Arial, sans-serif; /* Change font family */
+    font-size: 3em; /* Adjust font size */
+    color: #333; /* Change text color */
 }
