@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <title>Locked In</title>
+  <link rel="stylesheet" href="navBar.css">
+  <link rel="stylesheet" href="universalStyles.css">
+  <link rel="stylesheet" href="gradientbackGround.css">
+  <link rel="stylesheet" href="buttons.css">
+  <link rel="stylesheet" href="/FaceRec/style.css">
+  <script defer src="/FaceRec/face-api.min.js"></script>
+  <script defer src="/FaceRec/FaceVideo3.js"></script>
+  <style>
+    .counter-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbarFlexboxLEFT">
+    <!-- Navigation Bar Left -->
+  </div>
+  <button id="startButton" class="navbarButtons">Start Recording</button>
+  <button id="stopButton" disabled class="navbarButtons">Stop Recording</button>
+  <video id="video" width="640" height="480" autoplay muted></video>
+  <video id="recordedVideo" width="640" height="480" controls hidden></video>
+
+  <!-- Counter container for face detection -->
+  <div class="counter-container">
+    <h3>Locked inness</h3>
+    <p>Locked in: <span id="face-detected-count">0</span></p>
+    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
+    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
+  </div>
+
+  <script defer src="/FaceRec/face-api.min.js"></script>
+  <script defer src="/FaceRec/FaceVideo3.js"></script>
+  <script defer src="/FaceRec/recorder.js"></script>
+</body>
+</html>
