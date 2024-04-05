@@ -5,6 +5,11 @@ let faceNotDetectedCount = 0;
 let mediaRecorder;
 let recordedBlobs;
 let faceDetectionInterval;
+let currentTimeIn;
+const timelog = [];
+
+
+
 
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("./models"),
@@ -94,6 +99,7 @@ async function startRecordingWithFaceDetection() {
   startFaceDetection();
   console.log('MediaRecorder started', mediaRecorder);
 }
+
 async function startFaceDetection() {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
@@ -163,6 +169,23 @@ document.addEventListener('DOMContentLoaded', function() {
     isDetectionStarted = true; // Set detection started flag to true
     startButton.textContent = 'Resume'; // Change button text to 'Resume'
   });
+
+  startButton.addEventListener('click', async () => {
+    timeIn();
+    stopButton.disabled = false;
+    startButton.disabled = true;
+    startRecordingWithFaceDetection();
+  });
+
+  stopButton.addEventListener('click', () => {
+    timeOut(currentPercentage);
+    clearInterval(faceDetectionInterval);
+    mediaRecorder.stop();
+    video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
+    const blob = new Blob(recordedBlobs, {type: mediaRecorder.mimeType});
+    recordedVideo.src = URL.createObjectURL(blob);
+    startButton.disabled = false;
+    stopButton.disabled = true;
 
   pauseButton.addEventListener('click', () => {
     clearInterval(faceDetectionInterval);
