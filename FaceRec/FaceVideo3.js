@@ -292,7 +292,7 @@ function formatTime(time){
 }
 function timelogToCSV(data) {
   // Add header row
-  const csvRows = ['currentTimeIn,currentTimeOut,efficiency'];
+  const csvRows = ['DateIn, timeIn, DateOut, timeOut, efficiency'];
   
   // Add data rows
   data.forEach(row => {
