@@ -1,51 +1,54 @@
-timer = null;
-let [milleseconds, seconds, minutes, hours] = [0,0,0,0];
+let timer = null;
+let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
 let timerDisplay = document.getElementById("timerDisplay");
 
+let efficiencyTimer = 100;
+let [percentageDec, percentageWhole] = [10000, 0];
+let efficiencyNCV = document.getElementById("efficiencyNCV");
+efficiencyNCV.innerHTML = "100:00%";
 
-function stopwatchFunction() {
-  milleseconds++;
-   // ms
-  seconds = Math.trunc(milleseconds/100)%60;//s
-  minutes = Math.trunc(milleseconds/(100*60))%60; // minute
-  hours = Math.trunc(milleseconds/(100*60*60)); //hour
-
-  ms = milleseconds % 1000;
-  s = seconds < 10 ? "0" + seconds : seconds;
-  m = minutes < 10 ? "0" + minutes : minutes;
-  h = hours < 10 ? "0" + hours : hours;
-
-  timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms%100).toString().padStart(2, '0'));
-}
+let timerRunning = false; // Track if the timer is running or paused
 
 function startTimer_onClick() {
-if (milleseconds == 0) { // Timer not running, start it
-  timer = setInterval(stopwatchFunction, 10);
-} else { // Timer running, reset it
-  clearInterval(timer);
-  [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
-  timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
-  timer = setInterval(stopwatchFunction, 10);
+  if (!timerRunning) {
+    timer = setInterval(stopwatchFunction, 10);
+    eTimer = setInterval(efficiencyConstantDecrementFNC, 2000); // Decrease efficiency timer every 2 seconds
+    timerRunning = true;
+  }
 }
+
+function efficiencyConstantDecrementFNC() {
+  percentageDec -= 15; // Decrease by 1.5%
+  efficiencyNCV.innerHTML = Math.floor(percentageDec / 100) + ":" + (percentageDec % 100).toString().padStart(2, '0') + "%";
+}
+
+function stopwatchFunction() {
+  milliseconds++;
+  seconds = Math.trunc(milliseconds / 100) % 60;
+  minutes = Math.trunc(milliseconds / (100 * 60)) % 60;
+  hours = Math.trunc(milliseconds / (100 * 60 * 60));
+
+  let ms = milliseconds % 1000;
+  let s = seconds < 10 ? "0" + seconds : seconds;
+  let m = minutes < 10 ? "0" + minutes : minutes;
+  let h = hours < 10 ? "0" + hours : hours;
+
+  timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms % 100).toString().padStart(2, '0'));
 }
 
 function pauseTimer() {
   clearInterval(timer);
-
-  seconds = Math.trunc(milleseconds/100)%60;//s
-  minutes = Math.trunc(milleseconds/(100*60))%60; // minute
-  hours = Math.trunc(milleseconds/(100*60*60)); //hour
-
-  ms = milleseconds % 1000;
-  s = seconds < 10 ? "0" + seconds : seconds;
-  m = minutes < 10 ? "0" + minutes : minutes;
-  h = hours < 10 ? "0" + hours : hours;
-
-  timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms%100).toString().padStart(2, '0'));
+  clearInterval(eTimer);
+  timerRunning = false;
 }
 
 function resetTimer() {
   clearInterval(timer);
-  [milleseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
+  [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
   timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
-}   
+
+  clearInterval(eTimer);
+  percentageDec = 0;
+  efficiencyNCV.innerHTML = "100:00%";
+  timerRunning = false;
+}
