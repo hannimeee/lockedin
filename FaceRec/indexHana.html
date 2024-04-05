@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Face detection on the browser using JavaScript!</title>
-  
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
@@ -60,19 +59,43 @@
   </style>
 </head>
 <body>
-  
   <video id="video" width="600" height="450" autoplay></video>
-  <video id="recordedVideo" width="640" height="480" controls></video>
-  <button id="startButton">Start Detection</button>
-  <button id="stopButton">Stop Detection</button>
+  
   <!-- Counter container -->
-  <div class="counter-container">
-    <h3>Locked inness</h3>
-    <p>Locked in: <span id="face-detected-count">0</span></p>
-    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
-    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
-    <p>Time Log: <span id="timelog-container">0</span></p>
+
+  <div class="navbarFlexboxLEFT">
+    <div class="navbarButtons"><a href="/frontEnd/homePage.html">Home Page</a></div>
+    <div style="flex: 1; justify-content: flex-end">
+      <div class="navbarFlexboxRIGHT">
+        <div class="navbarButtons"><a href="written_works_page.html">Workflow</a></div>
+        <div class="navbarButtons"><a href="settings_page.html">Settings</a></div>
+        <div class="navbarButtons"><a href="/FaceRec/index3.html">Camera View</a></div>
+        <div class="navbarButtons"><a href="graph.html">Graph View</a></div>
+      </div>
+    </div>
   </div>
-   
+
+  <div class="timerContainer">
+    <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
+    <div class="buttons">
+      <button id="buttons" onclick="pauseTimer()">Pause</button>
+      <button id="buttons" onclick="startTimer_onClick()">Start</button>
+      <button id="buttons" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <div class="containerFACE">
+    <div class="face-efficiency-percentage" id="efficiencyNCV">00.00%</div>
+    <div class="counter-container">
+      <h3>Locked inness</h3>
+      <p>Locked in: <span id="face-detected-count">0</span></p>
+      <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
+      <p>Locked in %: <span id="locked-in-percentage">0</span></p>
+    </div>
+  </div>
+
+  <script type='text/javascript' src='/FaceRec/timerScriptCAM.js'></script>
+  <script type='text/javascript' src='/frontEnd/effiencyNCV.js'></script>
+
 </body>
 </html>
