@@ -1,61 +1,37 @@
-let timerInterval;
-let startTime;
-let elapsedTime = 0;
-let isPaused = false;
+let timer = null;
+let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
+let timerDisplay = document.getElementById("timerDisplay");
 
-function formatTime(milliseconds) {
-  const hours = Math.floor(milliseconds / (1000 * 60 * 60));
-  const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
-  const centiseconds = Math.floor((milliseconds % 1000) / 10);
+let timerRunning = false; // Track if the timer is running or paused
 
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${centiseconds.toString().padStart(2, '0')}`;
-}
-
-function updateTimerDisplay() {
-  document.getElementById('timerDisplay').textContent = formatTime(elapsedTime);
-}
-
-function startTimer() {
-  if (!timerInterval) {
-    startTime = Date.now() - elapsedTime;
-    timerInterval = setInterval(() => {
-      elapsedTime = Date.now() - startTime;
-      updateTimerDisplay();
-    }, 10);
-    document.getElementById('startButton').textContent = 'Resume';
+function startTimer_onClick() {
+  if (!timerRunning) {
+    timer = setInterval(stopwatchFunction, 10);
+    timerRunning = true;
   }
+}
+
+function stopwatchFunction() {
+  milliseconds++;
+  seconds = Math.trunc(milliseconds / 100) % 60;
+  minutes = Math.trunc(milliseconds / (100 * 60)) % 60;
+  hours = Math.trunc(milliseconds / (100 * 60 * 60));
+
+  let ms = milliseconds % 1000;
+  let s = seconds < 10 ? "0" + seconds : seconds;
+  let m = minutes < 10 ? "0" + minutes : minutes;
+  let h = hours < 10 ? "0" + hours : hours;
+
+  timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms % 100).toString().padStart(2, '0'));
 }
 
 function pauseTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    document.getElementById('startButton').textContent = 'Resume';
-    isPaused = true;
-  }
+  clearInterval(timer);
+  timerRunning = false;
 }
 
 function resetTimer() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  elapsedTime = 0;
-  updateTimerDisplay();
-  document.getElementById('startButton').textContent = 'Start';
-  isPaused = false;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateTimerDisplay();
-});
-
-function stopTimer() {
   clearInterval(timer);
   [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
   timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
-
-  clearInterval(eTimer);
-  percentageDec = 0;
-  efficiencyNCV.innerHTML = "100:00%";
-  timerRunning = false;
 }
