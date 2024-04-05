@@ -1,5 +1,8 @@
 const video = document.getElementById("video");
 
+let faceDetectedCount = 0;
+let faceNotDetectedCount = 0;
+
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
@@ -21,7 +24,7 @@ function startWebcam() {
 }
 
 function getLabeledFaceDescriptions() {
-  const labels = ["Dorn"];
+  const labels = ["PLUH"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
@@ -95,6 +98,17 @@ video.addEventListener("play", async () => {
 
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
+    // Increment face detected or not detected counters
+    if (filteredDetections.length > 0) {
+      faceDetectedCount++;
+    } else {
+      faceNotDetectedCount++;
+    }
+
+    // Update the counters in the HTML
+    document.getElementById("face-detected-count").innerText = faceDetectedCount;
+    document.getElementById("face-not-detected-count").innerText = faceNotDetectedCount;
+
     const results = resizedDetections.map((d) => {
       return faceMatcher.findBestMatch(d.descriptor);
     });
@@ -107,3 +121,16 @@ video.addEventListener("play", async () => {
     });
   }, 100);
 });
+
+// Update the "Locked in %" stat
+function updateLockedInPercentage() {
+  const totalFrames = faceDetectedCount + faceNotDetectedCount;
+  const percentage = totalFrames > 0 ? ((faceDetectedCount / totalFrames) * 100).toFixed(2) : 0;
+  document.getElementById("locked-in-percentage").textContent = percentage;
+}
+
+// Inside the video.addEventListener("play", async () => { ... }) function:
+
+setInterval(() => {
+  updateLockedInPercentage(); // Update the locked in percentage on each frame
+}, 100);

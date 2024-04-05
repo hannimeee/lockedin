@@ -4,12 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Face detection on the browser using javascript !</title>
+  <title>Face detection on the browser using JavaScript!</title>
   <script defer src="face-api.min.js"></script>
   <script defer src="FaceVideo3.js"></script>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Style for the counters */
+    .counter-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-  <video id="video" width="600" height="450" autoplay>
+  <video id="video" width="600" height="450" autoplay></video>
+  
+  <!-- Counter container -->
+  <div class="counter-container">
+    <h3>Locked inness</h3>
+    <p>Locked in: <span id="face-detected-count">0</span></p>
+    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
+    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
+  </div>
 </body>
 </html>
