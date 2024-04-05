@@ -48,3 +48,14 @@ function resetTimer() {
 document.addEventListener('DOMContentLoaded', () => {
   updateTimerDisplay();
 });
+
+function stopTimer() {
+  clearInterval(timer);
+  [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0]; // Reset timer values
+  timerDisplay.innerHTML = "00:00:00:00"; // Reset timer display
+
+  clearInterval(eTimer);
+  percentageDec = 0;
+  efficiencyNCV.innerHTML = "100:00%";
+  timerRunning = false;
+}

@@ -22,21 +22,18 @@
 <div class="timerContainer">
   <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
   <div class="buttons">
-    <!-- <button id="buttons" onclick="pauseTimer()">Pause</button>
-    <button id="buttons" onclick="startTimer()">Start</button>
-    <button id="buttons" onclick="resetTimer()">Reset</button> -->
     <button id="startButton" onclick="startTimer()">Start Detection</button>
     <button id="pauseButton" onclick="pauseTimer()">Pause Detection</button>
     <button id="resetButton" onclick="resetTimer()">Reset Board</button>
+    <button id="stopButton" onclick="stopTimer()">Reset Board</button>
+    <!-- <button id="STOP STUDY SESSION" onclick="stopTimer()">Reset Board</button> MAKE A STOP TIMER--> 
   </div>
 </div>
 
-<!-- <div class="containerFACE">
-  <div class="face-efficiency-percentage" id="efficiencyNCV">00.00%</div>
-</div> -->
+<p>Time Log: <span id="timelog-container">0</span></p>
 
 <script type='text/javascript' src='/FaceRec/timerScript.js'></script>
-<!-- <script type='text/javascript' src='effiencyNCV.js'></script> -->
+
 
 </body>
 </html>

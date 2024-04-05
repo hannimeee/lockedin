@@ -9,8 +9,6 @@ let currentTimeIn;
 const timelog = [];
 
 
-
-
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("./models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("./models"),
@@ -159,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const startButton = document.getElementById('startButton');
   const pauseButton = document.getElementById('pauseButton');
   const resetButton = document.getElementById('resetButton');
+  // const stopButton = document.getElementById('stopButton');
   let isDetectionStarted = false; // Track if detection has started
 
   startButton.addEventListener('click', async () => {
@@ -168,31 +167,13 @@ document.addEventListener('DOMContentLoaded', function() {
     startRecordingWithFaceDetection();
     isDetectionStarted = true; // Set detection started flag to true
     startButton.textContent = 'Resume'; // Change button text to 'Resume'
-  });
-
-  startButton.addEventListener('click', async () => {
     timeIn();
-    stopButton.disabled = false;
-    startButton.disabled = true;
-    startRecordingWithFaceDetection();
   });
-
-  stopButton.addEventListener('click', () => {
-    timeOut(currentPercentage);
-    clearInterval(faceDetectionInterval);
-    mediaRecorder.stop();
-    video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
-    const blob = new Blob(recordedBlobs, {type: mediaRecorder.mimeType});
-    recordedVideo.src = URL.createObjectURL(blob);
-    startButton.disabled = false;
-    stopButton.disabled = true;
 
   pauseButton.addEventListener('click', () => {
+    timeOut(currentPercentage);
     clearInterval(faceDetectionInterval);
-    // mediaRecorder.stop();
-    // video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
-    // const blob = new Blob(recordedBlobs, {type: mediaRecorder.mimeType});
-    // recordedVideo.src = URL.createObjectURL(blob);
+
     startButton.disabled = false;
     pauseButton.disabled = true;
     resetButton.disabled = false; // Enable reset button when detection stops
@@ -225,8 +206,66 @@ function updateLockedInPercentage() {
   document.getElementById("locked-in-percentage").textContent = percentage;
 }
 
-// Inside the video.addEventListener("play", async () => { ... }) function:
+function timeIn(){
+  currentTimeIn = new Date();
+}
+function timeOut(efficiency) {
+  const currentTimeOut = new Date();
 
-// setInterval(() => {
-//   updateLockedInPercentage(); // Update the locked in percentage on each frame
-// }, 100);
+  // Assuming formatTime is a function that formats your Date objects
+  const formattedIn = formatTime(currentTimeIn);
+  const formattedOut = formatTime(currentTimeOut);
+
+  // Add a new object to the timelog array
+  timelog.push({
+    currentTimeIn: formattedIn,
+    currentTimeOut: formattedOut,
+    efficiency: efficiency
+  });
+
+  // Call displayTimelog to update the log display
+  displayTimelog();
+}
+
+function displayTimelog() {
+  const logs = timelog; // Retrieve the array of timelog objects
+  const container = document.getElementById('timelog-container');
+
+  // Create a table or any other structure to display the timelog entries
+  const table = document.createElement('table');
+  if (timelog.length == 1){
+  table.innerHTML = `
+    <tr>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Efficiency (%)</th>
+    </tr>
+  `;
+  }
+
+  if (logs.length > 0) {
+    const lastLog = logs[logs.length - 1]; // Access the last item in the array
+    
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${lastLog.currentTimeIn}</td>
+      <td>${lastLog.currentTimeOut}</td>
+      <td>${lastLog.efficiency}</td>
+    `;
+    table.appendChild(row); // Append only the last row
+  }
+
+  container.appendChild(table);
+}
+function formatTime(time){
+    const formattedDate = time.toLocaleString('en-US', {
+    month: 'numeric', // Numeric month
+    day: 'numeric', // Numeric day
+    year: 'numeric', // Numeric year
+    hour: 'numeric', // Numeric hour without leading zero
+    minute: '2-digit', // 2-digit minute
+    second: '2-digit',
+    hour12: false
+  });
+  return formattedDate;
+}
