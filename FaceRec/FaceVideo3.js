@@ -152,10 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
   let canvas; // Define canvas variable outside of the event listener
   const startButton = document.getElementById('startButton');
   const pauseButton = document.getElementById('pauseButton');
+  const resetButton = document.getElementById('resetButton');
 
   startButton.addEventListener('click', async () => {
     pauseButton.disabled = false;
     startButton.disabled = true;
+    resetButton.disabled = true; // Disable reset button when detection starts
     startRecordingWithFaceDetection();
   });
 
@@ -167,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // recordedVideo.src = URL.createObjectURL(blob);
     startButton.disabled = false;
     pauseButton.disabled = true;
+    resetButton.disabled = false; // Enable reset button when detection stops
 
     if (canvas) { // Check if canvas is defined before removing it
       canvas.remove(); // Remove the canvas from the DOM
@@ -178,6 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas = null; // Reset the canvas variable
       }
     }
+  });
+  resetButton.addEventListener('click', () => {
+    faceDetectedCount = 0;
+    faceNotDetectedCount = 0;
+    updateLockedInPercentage();
   });
 });
 
