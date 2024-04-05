@@ -7,7 +7,7 @@ body {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
-    background-color: rgb(114, 114, 114); /* Set background color*/
+    background-color:   rgb(255, 255, 255); /* Set background color*/
 }
 
 /* Style for the canvas element (BLUEBOX)*/

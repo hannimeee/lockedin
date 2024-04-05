@@ -151,22 +151,22 @@ async function startFaceDetection() {
 document.addEventListener('DOMContentLoaded', function() {
   let canvas; // Define canvas variable outside of the event listener
   const startButton = document.getElementById('startButton');
-  const stopButton = document.getElementById('stopButton');
+  const pauseButton = document.getElementById('pauseButton');
 
   startButton.addEventListener('click', async () => {
-    stopButton.disabled = false;
+    pauseButton.disabled = false;
     startButton.disabled = true;
     startRecordingWithFaceDetection();
   });
 
-  stopButton.addEventListener('click', () => {
+  pauseButton.addEventListener('click', () => {
     clearInterval(faceDetectionInterval);
     // mediaRecorder.stop();
     // video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
     // const blob = new Blob(recordedBlobs, {type: mediaRecorder.mimeType});
     // recordedVideo.src = URL.createObjectURL(blob);
     startButton.disabled = false;
-    stopButton.disabled = true;
+    pauseButton.disabled = true;
 
     if (canvas) { // Check if canvas is defined before removing it
       canvas.remove(); // Remove the canvas from the DOM
