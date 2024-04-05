@@ -8,16 +8,53 @@
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
+  <link rel="stylesheet" href="/frontEnd/navBar.css">
+  <link rel="stylesheet" href="/frontEnd/universalStyles.css">
+  <link rel="stylesheet" href="/frontEnd/gradientbackGround.css">
+  <link rel="stylesheet" href="/frontEnd/buttons.css">
 
   <style>
     /* Style for the counters */
     .counter-container {
       position: fixed;
-      top: 20px;
+      top: 200px;
       right: 20px;
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
       padding: 10px;
+      z-index: 9999; /* Ensure the counters appear above other elements */
+    }
+
+    /* Style for the navbar */
+    .navbarFlexboxLEFT {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      z-index: 9998; /* Ensure the navbar appears above other elements except counters */
+    }
+
+    /* Style for the timer container */
+    .timerContainer {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateX(+270%) translateY(-40%);
+      z-index: 9999; /* Ensure the timer appears above other elements */
+    }
+
+    /* Style for the face container */
+    .containerFACE {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 9999; /* Ensure the face container appears above other elements */
     }
   </style>
 </head>
@@ -31,5 +68,39 @@
     <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
     <p>Locked in %: <span id="locked-in-percentage">0</span></p>
   </div>
+
+  <div class="navbarFlexboxLEFT">
+    <div class="navbarButtons"><a href="homePage.html">Home Page</a></div>
+    <div style="flex: 1; justify-content: flex-end">
+      <div class="navbarFlexboxRIGHT">
+        <div class="navbarButtons"><a href="written_works_page.html">Workflow</a></div>
+        <div class="navbarButtons"><a href="settings_page.html">Settings</a></div>
+        <div class="navbarButtons"><a href="/FaceRec/index3.html">Camera View</a></div>
+        <div class="navbarButtons"><a href="graph.html">Graph View</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timerContainer">
+    <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
+    <div class="buttons">
+      <button id="buttons" onclick="pauseTimer()">Pause</button>
+      <button id="buttons" onclick="startTimer_onClick()">Start</button>
+      <button id="buttons" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <div class="containerFACE">
+    <div class="face-efficiency-percentage" id="efficiencyNCV">00.00%</div>
+    <div class="buttons">
+      <button id="buttons" onclick="pauseTimer()">Pause</button>
+      <button id="buttons" onclick="startTimer_onClick()">Start</button>
+      <button id="buttons" onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <script type='text/javascript' src='timerScript.js'></script>
+  <script type='text/javascript' src='effiencyNCV.js'></script>
+
 </body>
 </html>
