@@ -8,20 +8,22 @@
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
+  <link rel="stylesheet" href="Log_Stopwatch.css">
 </head>
 <body>
+  <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
+
   <video id="video" width="600" height="450" autoplay></video>
   <!-- Counter container -->
   <div class="counter-container">
-    <h3>Locked in or nah</h3>
-    <p>Locked in: <span id="face-detected-count">0</span></p>
-    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
-    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
+    <h3>Focus</h3>
+    <p>Fcs Points: <span id="face-detected-count">0</span></p>
+    <p>Fcs Demerit: <span id="face-not-detected-count">0</span></p>
+    <p>Focus %: <span id="locked-in-percentage">0</span></p>
   </div>
 
 <div class="timerContainer">
-  <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
-  <div class="buttons">
+  <div class="Mediabuttons">
     <!-- <button id="buttons" onclick="pauseTimer()">Pause</button>
     <button id="buttons" onclick="startTimer()">Start</button>
     <button id="buttons" onclick="resetTimer()">Reset</button> -->
@@ -29,7 +31,7 @@
     <button id="pauseButton" onclick="pauseTimer()">Pause</button>
     <button id="resetButton" onclick="resetTimer()">Reset Board</button>
     <button id="logButton">Log Study Session</button>
-
+  <div>    
     <div id="timelog-container">
       <h3>Time Log</h3>
       <table id="timelog-table">

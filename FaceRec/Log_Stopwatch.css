@@ -1,0 +1,31 @@
+.timerDisplay {
+    position: absolute;
+    top: 360px; /* Adjust as needed */
+    left: 199px; /* Adjust as needed */
+    width: 100px; /* Example width */
+    height: 100px; /* Example height */
+}
+
+.counter-container {
+    position: absolute;
+    top: 500px; /* Adjust as needed */
+    left: 204px; /* Adjust as needed */
+    width: 100px; /* Example width */
+    height: 100px; /* Example height */
+}
+
+.timelog-container {
+    position: absolute;
+    top: 500px; /* Adjust as needed */
+    left: 800px; /* Adjust as needed */
+    width: 100px; /* Example width */
+    height: 100px; /* Example height */
+}
+
+.Mediabuttons {
+    position: absolute;
+    top: 180px; /* Adjust as needed */
+    left: 700px; /* Adjust as needed */
+    width: 100px; /* Example width */
+    height: 100px; /* Example height */
+}
