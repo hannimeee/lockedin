@@ -118,6 +118,7 @@ async function startFaceDetection() {
         const {rxNumber,ryNumber} = xyFaceDetect(detection);
         return ryNumber > optimizedY-0.5 && ryNumber < optimizedY + 0.5 && 
                 rxNumber > optimizedX-0.5 && rxNumber < optimizedX + 0.5;
+    
     });
     
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
@@ -149,7 +150,6 @@ async function startFaceDetection() {
 
   }, 100);
 };
-
 
 document.addEventListener('DOMContentLoaded', function() {
   let canvas; // Define canvas variable outside of the event listener
@@ -205,7 +205,10 @@ function updateLockedInPercentage() {
   const totalFrames = faceDetectedCount + faceNotDetectedCount;
   const percentage = totalFrames > 0 ? ((faceDetectedCount / totalFrames) * 100).toFixed(2) : 0;
   document.getElementById("locked-in-percentage").textContent = percentage;
+
+  currentPercentage = percentage; // Store the current efficiency percentage
 }
+
 
 // Inside the video.addEventListener("play", async () => { ... }) function:
 
@@ -226,6 +229,7 @@ function updateLockedInPercentage() {
 function timeIn(){
   currentTimeIn = new Date();
 }
+
 function timeOut(efficiency) {
   const currentTimeOut = new Date();
 
@@ -237,7 +241,7 @@ function timeOut(efficiency) {
   timelog.push({
     currentTimeIn: formattedIn,
     currentTimeOut: formattedOut,
-    efficiency: efficiency
+    efficiency: efficiency // Use the passed efficiency parameter
   });
 
   // Call displayTimelog to update the log display
@@ -286,3 +290,4 @@ function formatTime(time){
   });
   return formattedDate;
 }
+
