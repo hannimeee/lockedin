@@ -29,11 +29,20 @@
     <button id="pauseButton" onclick="pauseTimer()">Pause</button>
     <button id="resetButton" onclick="resetTimer()">Reset Board</button>
     <button id="logButton">Log Study Session</button>
-    <p>Time Log: <span id="timelog-container">0</span></p>
   </div>
 </div>
 
-<p>Time Log: <span id="timelog-container"></span></p>
+<div id="timelog-container">
+  <h3>Time Log</h3>
+  <table id="timelog-table">
+    <tr>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Efficiency (%)</th>
+    </tr>
+  </table>
+</div>
+
 
 
 <script type='text/javascript' src='/FaceRec/timerScript.js'></script>
