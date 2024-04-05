@@ -173,11 +173,14 @@ document.addEventListener('DOMContentLoaded', function() {
   pauseButton.addEventListener('click', () => {
     timeOut(currentPercentage);
     clearInterval(faceDetectionInterval);
-
-    startButton.disabled = false;
+  
+    startButton.disabled = false; // Enable the start button
     pauseButton.disabled = true;
-    resetButton.disabled = false; // Enable reset button when detection stops
-
+    resetButton.disabled = false;
+  
+    // Reset the start button text content to 'Start'
+    startButton.textContent = 'Resume';
+    
     if (canvas) { // Check if canvas is defined before removing it
       canvas.remove(); // Remove the canvas from the DOM
       canvas = null; // Reset the canvas variable
