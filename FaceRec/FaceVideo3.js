@@ -5,7 +5,9 @@ let faceNotDetectedCount = 0;
 let mediaRecorder;
 let recordedBlobs;
 let faceDetectionInterval;
-
+let currentTimeIn;
+let currentPercentage;
+const timelog = [];
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("./models"),
   faceapi.nets.faceRecognitionNet.loadFromUri("./models"),
@@ -80,7 +82,7 @@ async function startRecordingWithFaceDetection() {
   video.srcObject = stream;
 
   // Specify MIME type for recording
-  const options = MediaRecorder.isTypeSupported('video/mp4; codecs="avc1.42E01E"')
+  const options = await MediaRecorder.isTypeSupported('video/mp4; codecs="avc1.42E01E"')
                   ? { mimeType: 'video/mp4; codecs="avc1.42E01E"' }
                   : { mimeType: 'video/webm' };
 
@@ -91,19 +93,19 @@ async function startRecordingWithFaceDetection() {
       recordedBlobs.push(event.data);
     }
   };
-  mediaRecorder.start(10);
+  await mediaRecorder.start(10);
 
   // Start face detection
-  startFaceDetection();
+  startFaceDetection(video);
 
   console.log('MediaRecorder started', mediaRecorder);
 }
 
-async function startFaceDetection() {
+async function startFaceDetection(video) {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
 
-  const canvas = faceapi.createCanvasFromMedia(video);
+  const canvas = await faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
 
   const displaySize = { width: video.width, height: video.height };
@@ -152,15 +154,18 @@ async function startFaceDetection() {
 };
 document.addEventListener('DOMContentLoaded', function() {
   // Assuming startButton and stopButton are the IDs of your buttons
+  
   const startButton = document.getElementById('startButton');
   const stopButton = document.getElementById('stopButton');
   startButton.addEventListener('click', async () => {
+    timeIn();
     stopButton.disabled = false;
     startButton.disabled = true;
     startRecordingWithFaceDetection();
   });
 
   stopButton.addEventListener('click', () => {
+    timeOut(currentPercentage);
     clearInterval(faceDetectionInterval);
     mediaRecorder.stop();
     video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
@@ -174,5 +179,69 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateLockedInPercentage() {
   const totalFrames = faceDetectedCount + faceNotDetectedCount;
   const percentage = totalFrames > 0 ? ((faceDetectedCount / totalFrames) * 100).toFixed(2) : 0;
+  currentPercentage = percentage;
   document.getElementById("locked-in-percentage").textContent = percentage;
+}
+function timeIn(){
+  currentTimeIn = new Date();
+}
+function timeOut(efficiency) {
+  const currentTimeOut = new Date();
+
+  // Assuming formatTime is a function that formats your Date objects
+  const formattedIn = formatTime(currentTimeIn);
+  const formattedOut = formatTime(currentTimeOut);
+
+  // Add a new object to the timelog array
+  timelog.push({
+    currentTimeIn: formattedIn,
+    currentTimeOut: formattedOut,
+    efficiency: efficiency
+  });
+
+  // Call displayTimelog to update the log display
+  displayTimelog();
+}
+
+function displayTimelog() {
+  const logs = timelog; // Retrieve the array of timelog objects
+  const container = document.getElementById('timelog-container');
+
+  // Create a table or any other structure to display the timelog entries
+  const table = document.createElement('table');
+  if (timelog.length == 1){
+  table.innerHTML = `
+    <tr>
+      <th>Time In</th>
+      <th>Time Out</th>
+      <th>Efficiency (%)</th>
+    </tr>
+  `;
+  }
+
+  if (logs.length > 0) {
+    const lastLog = logs[logs.length - 1]; // Access the last item in the array
+    
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${lastLog.currentTimeIn}</td>
+      <td>${lastLog.currentTimeOut}</td>
+      <td>${lastLog.efficiency}</td>
+    `;
+    table.appendChild(row); // Append only the last row
+  }
+
+  container.appendChild(table);
+}
+function formatTime(time){
+    const formattedDate = time.toLocaleString('en-US', {
+    month: 'numeric', // Numeric month
+    day: 'numeric', // Numeric day
+    year: 'numeric', // Numeric year
+    hour: 'numeric', // Numeric hour without leading zero
+    minute: '2-digit', // 2-digit minute
+    second: '2-digit',
+    hour12: false
+  });
+  return formattedDate;
 }
