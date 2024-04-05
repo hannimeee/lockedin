@@ -121,7 +121,7 @@ async function startFaceDetection() {
 
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
-    // Increment face detected or not detected counters
+    // Increment both face detected and not detected counters
     if (filteredDetections.length > 0) {
       faceDetectedCount++;
     } else {
@@ -141,11 +141,12 @@ async function startFaceDetection() {
         label: result,
       });
       drawBox.draw(canvas);
+    });
     updateLockedInPercentage();
 
-    });
   }, 100);
 };
+
 
 document.addEventListener('DOMContentLoaded', function() {
   let canvas; // Define canvas variable outside of the event listener
