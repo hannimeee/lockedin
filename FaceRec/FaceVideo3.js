@@ -290,4 +290,37 @@ function formatTime(time){
   });
   return formattedDate;
 }
+function timelogToCSV(data) {
+  // Add header row
+  const csvRows = ['currentTimeIn,currentTimeOut,efficiency'];
+  
+  // Add data rows
+  data.forEach(row => {
+      csvRows.push(`${row.currentTimeIn},${row.currentTimeOut},${row.efficiency}`);
+  });
+  
+  return csvRows.join('\n');
+}
+
+// Function to download data as a CSV file
+function downloadCSV(csvData, filename) {
+  const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Convert timelog to CSV and trigger the download
+function triggerDownload() {
+  // Example CSV data and filename
+  const csvData = timelogToCSV(timelog);
+  const filename = "timelog.csv";
+  
+  downloadCSV(csvData, filename);
+}
+
 
