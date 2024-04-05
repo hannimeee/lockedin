@@ -1,5 +1,4 @@
 timer = null;
-// let [milleseconds, seconds, minutes, hours] = [0,0,0,0];
 let [milleseconds, seconds, minutes, hours] = [0,0,0,0];
 let timerDisplay = document.getElementById("timerDisplay");
 
@@ -18,20 +17,6 @@ function stopwatchFunction() {
 
   timerDisplay.innerHTML = h + ":" + m + ":" + s + ":" + ((ms%100).toString().padStart(2, '0'));
 }
-
-// function stopwatchFunction() {
-//   milleseconds++;
-//   if (milleseconds == 100) {
-//     seconds++
-//     if (seconds == 60) {
-//       minutes++
-//       if (minutes == 60) {
-//         hours++
-//       }
-//     }
-//   }
-//   timerDisplay.innerHTML = hours + ":" + minutes + ":" +  seconds + ":" + milleseconds%1000
-// }
 
 function startTimer_onClick() {
 if (milleseconds == 0) { // Timer not running, start it
