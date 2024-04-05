@@ -5,22 +5,22 @@ let timerDisplay = document.getElementById("timerDisplay");
 let efficiencyTimer = 100;
 let [percentageDec, percentageWhole] = [10000, 0];
 let efficiencyNCV = document.getElementById("efficiencyNCV");
-efficiencyNCV.innerHTML = "100:00%";
+efficiencyNCV.innerHTML = "100.00%";
 
 let timerRunning = false; // Track if the timer is running or paused
 
 function startTimer_onClick() {
   if (!timerRunning) {
     timer = setInterval(stopwatchFunction, 10);
-    eTimer = setInterval(efficiencyConstantDecrementFNC, 2000); // Decrease efficiency timer every 2 seconds
+    eTimer = setInterval(efficiencyConstantDecrementFNC, 1);
     timerRunning = true;
   }
 }
 
 function efficiencyConstantDecrementFNC() {
-  percentageDec -= 15; // Decrease by 1.5%
-  efficiencyNCV.innerHTML = Math.floor(percentageDec / 100) + ":" + (percentageDec % 100).toString().padStart(2, '0') + "%";
-}
+    const lockedInPercentage = document.getElementById('locked-in-percentage').textContent;
+    document.getElementById('efficiencyNCV').textContent = lockedInPercentage + "%";
+  }  
 
 function stopwatchFunction() {
   milliseconds++;
