@@ -1,0 +1,17 @@
+.landscapeFlexBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px;
+}
+
+.counter-container {
+    background-color: blue;
+}
+
+.buttons {
+    background-color: red;
+    display: flex;
+    height: 40px;
+}
+

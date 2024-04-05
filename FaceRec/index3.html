@@ -8,10 +8,22 @@
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
+  <link rel="stylesheet" href="timeLogMain.css">
 </head>
 <body>
-  <video id="video" width="600" height="450" autoplay></video>
-  <!-- Counter container -->
+
+<div class="buttons">
+  <button id="startButton" onclick="startTimer_onClick()">Start Study Session</button>
+  <button id="pauseButton" onclick="pauseTimer()">Pause</button>
+  <button id="resetButton" onclick="resetTimer()">Reset Board</button>
+  <button id="logButton">Log Study Session</button>
+<div>
+
+<div class="landscapeFlexBox">
+  <div class="video-projection">
+    <video id="video" width="600" height="450" autoplay></video>
+  </div>
+
   <div class="counter-container">
     <h3>Locked in or nah</h3>
     <p>Locked in: <span id="face-detected-count">0</span></p>
@@ -19,31 +31,20 @@
     <p>Locked in %: <span id="locked-in-percentage">0</span></p>
   </div>
 
-<div class="timerContainer">
   <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
-  <div class="buttons">
-    <!-- <button id="buttons" onclick="pauseTimer()">Pause</button>
-    <button id="buttons" onclick="startTimer()">Start</button>
-    <button id="buttons" onclick="resetTimer()">Reset</button> -->
-    <button id="startButton" onclick="startTimer_onClick()">Start Study Session</button>
-    <button id="pauseButton" onclick="pauseTimer()">Pause</button>
-    <button id="resetButton" onclick="resetTimer()">Reset Board</button>
-    <button id="logButton">Log Study Session</button>
 
-    <div id="timelog-container">
-      <h3>Time Log</h3>
-      <table id="timelog-table">
-        <tr>
-          <th>Time In</th>
-          <th>Time Out</th>
-          <th>Efficiency (%)</th>
-        </tr>
-      </table>
-    </div>
+  <div id="timelog-container">
+    <h3>Time Log</h3>
+    <table id="timelog-table">
+      <tr>
+        <th>Time In</th>
+        <th>Time Out</th>
+        <th>Efficiency (%)</th>
+      </tr>
+    </table>
   </div>
+  
 </div>
-
-
 
 
 
