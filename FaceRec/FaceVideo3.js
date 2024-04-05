@@ -6,8 +6,8 @@ let mediaRecorder;
 let recordedBlobs;
 let faceDetectionInterval;
 let currentTimeIn;
+let currentPercentage;
 const timelog = [];
-
 
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("./models"),
@@ -97,7 +97,6 @@ async function startRecordingWithFaceDetection() {
   startFaceDetection();
   console.log('MediaRecorder started', mediaRecorder);
 }
-
 async function startFaceDetection() {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
@@ -157,30 +156,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const startButton = document.getElementById('startButton');
   const pauseButton = document.getElementById('pauseButton');
   const resetButton = document.getElementById('resetButton');
-  // const stopButton = document.getElementById('stopButton');
+  const logButton = document.getElementById('logButton');
   let isDetectionStarted = false; // Track if detection has started
 
   startButton.addEventListener('click', async () => {
+    timeIn();
     pauseButton.disabled = false;
     startButton.disabled = true;
     resetButton.disabled = true; // Disable reset button when detection starts
     startRecordingWithFaceDetection();
     isDetectionStarted = true; // Set detection started flag to true
     startButton.textContent = 'Resume'; // Change button text to 'Resume'
-    timeIn();
   });
 
   pauseButton.addEventListener('click', () => {
-    timeOut(currentPercentage);
     clearInterval(faceDetectionInterval);
-  
-    startButton.disabled = false; // Enable the start button
+    startButton.disabled = false;
     pauseButton.disabled = true;
-    resetButton.disabled = false;
-  
-    // Reset the start button text content to 'Start'
-    startButton.textContent = 'Resume';
-    
+    resetButton.disabled = false; // Enable reset button when detection stops
+
     if (canvas) { // Check if canvas is defined before removing it
       canvas.remove(); // Remove the canvas from the DOM
       canvas = null; // Reset the canvas variable
@@ -199,6 +193,10 @@ document.addEventListener('DOMContentLoaded', function() {
     updateLockedInPercentage();
     startButton.textContent = 'Start'; // Change button text back to 'Start' after reset
   });
+
+  logButton.addEventListener('click', () => {
+    timeOut(currentPercentage);
+  });
 });
 
 
@@ -208,6 +206,22 @@ function updateLockedInPercentage() {
   const percentage = totalFrames > 0 ? ((faceDetectedCount / totalFrames) * 100).toFixed(2) : 0;
   document.getElementById("locked-in-percentage").textContent = percentage;
 }
+
+// Inside the video.addEventListener("play", async () => { ... }) function:
+
+// setInterval(() => {
+//   updateLockedInPercentage(); // Update the locked in percentage on each frame
+// }, 100);
+// Inside the video.addEventListener("play", async () => { ... }) function:
+
+// setInterval(() => {
+//   updateLockedInPercentage(); // Update the locked in percentage on each frame
+// }, 100);
+// Inside the video.addEventListener("play", async () => { ... }) function:
+
+// setInterval(() => {
+//   updateLockedInPercentage(); // Update the locked in percentage on each frame
+// }, 100);
 
 function timeIn(){
   currentTimeIn = new Date();
