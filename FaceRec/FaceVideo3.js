@@ -2,6 +2,9 @@ const video = document.getElementById("video");
 
 let faceDetectedCount = 0;
 let faceNotDetectedCount = 0;
+let mediaRecorder;
+let recordedBlobs;
+let faceDetectionInterval;
 
 Promise.all([
   faceapi.nets.ssdMobilenetv1.loadFromUri("./models"),
@@ -66,12 +69,32 @@ function xyFaceDetect(detection)
     const ry = (eyeLeft[0] + (eyeRight[0] - eyeLeft[0]) / 2 - nose[0]) / boxWidth;
     const ryNumber = parseFloat(ry.toFixed(3));
     const rxNumber = parseFloat(rx.toFixed(3));
-    console.log(`Jaw: ${jaw}, Mouth: ${mouth}, Box Height: ${boxHeight}`);
+    //console.log(`Jaw: ${jaw}, Mouth: ${mouth}, Box Height: ${boxHeight}`);
 
-    console.log(rxNumber,ryNumber);
+    //console.log(rxNumber,ryNumber);
     return {rxNumber,ryNumber};
 }
-video.addEventListener("play", async () => {
+
+async function startRecordingWithFaceDetection() {
+  const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  video.srcObject = stream;
+  // Specify MIME type for recording
+  const options = MediaRecorder.isTypeSupported('video/mp4; codecs="avc1.42E01E"')
+                  ? { mimeType: 'video/mp4; codecs="avc1.42E01E"' }
+                  : { mimeType: 'video/webm' };
+  mediaRecorder = new MediaRecorder(stream, options);
+  recordedBlobs = [];
+  mediaRecorder.ondataavailable = (event) => {
+    if (event.data && event.data.size > 0) {
+      recordedBlobs.push(event.data);
+    }
+  };
+  mediaRecorder.start(10);
+  // Start face detection
+  startFaceDetection();
+  console.log('MediaRecorder started', mediaRecorder);
+}
+async function startFaceDetection() {
   const labeledFaceDescriptors = await getLabeledFaceDescriptions();
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors);
 
@@ -81,7 +104,7 @@ video.addEventListener("play", async () => {
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
 
-  setInterval(async () => {
+  faceDetectionInterval = setInterval(async () => {
     const detections = await faceapi
       .detectAllFaces(video)
       .withFaceLandmarks()
@@ -118,9 +141,45 @@ video.addEventListener("play", async () => {
         label: result,
       });
       drawBox.draw(canvas);
+    updateLockedInPercentage();
+
     });
   }, 100);
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  let canvas; // Define canvas variable outside of the event listener
+  const startButton = document.getElementById('startButton');
+  const stopButton = document.getElementById('stopButton');
+
+  startButton.addEventListener('click', async () => {
+    stopButton.disabled = false;
+    startButton.disabled = true;
+    startRecordingWithFaceDetection();
+  });
+
+  stopButton.addEventListener('click', () => {
+    clearInterval(faceDetectionInterval);
+    // mediaRecorder.stop();
+    // video.srcObject.getTracks().forEach(track => track.stop()); // Stop video stream
+    // const blob = new Blob(recordedBlobs, {type: mediaRecorder.mimeType});
+    // recordedVideo.src = URL.createObjectURL(blob);
+    startButton.disabled = false;
+    stopButton.disabled = true;
+
+    if (canvas) { // Check if canvas is defined before removing it
+      canvas.remove(); // Remove the canvas from the DOM
+      canvas = null; // Reset the canvas variable
+    } else {
+      canvas = document.querySelector('canvas'); // Retrieve the canvas element
+      if (canvas) {
+        canvas.remove(); // Remove the canvas from the DOM
+        canvas = null; // Reset the canvas variable
+      }
+    }
+  });
 });
+
 
 // Update the "Locked in %" stat
 function updateLockedInPercentage() {
@@ -131,6 +190,6 @@ function updateLockedInPercentage() {
 
 // Inside the video.addEventListener("play", async () => { ... }) function:
 
-setInterval(() => {
-  updateLockedInPercentage(); // Update the locked in percentage on each frame
-}, 100);
+// setInterval(() => {
+//   updateLockedInPercentage(); // Update the locked in percentage on each frame
+// }, 100);

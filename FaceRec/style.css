@@ -1,0 +1,47 @@
+/* Set default styles for the body */
+body {
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    width: 100vw; /* Set the width to 100% of the viewport width */
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: rgb(114, 114, 114); /* Set background color*/
+}
+
+/* Style for the canvas element (BLUEBOX)*/
+canvas {
+    position: absolute; /* Position canvas absolutely within its container */
+}
+
+/* Style for the counters */
+.counter-container {
+    position: fixed; /* Position the counter container relative to the viewport */
+    top: 50%; /* Position the container 5% from the top of the viewport */
+    right: 70%; /* Position the container 5% from the right of the viewport */
+    transform: translate(0%, -50%); /* Center the container both vertically and horizontally */
+    background-color: rgba(255, 255, 255, 0.5); /* Set background color with 50% opacity */
+    color: rgb(0, 0, 0); /* Set text color to white */
+    padding: 10px; /* Add padding to the container */
+    border-radius: 10px; /* Add rounded edges */
+}
+
+/* Style for the video element */
+video {
+    width: 80%; /* Set the width to 80% of the container */
+    max-width: 600px; /* Limit the maximum width to 600px */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+    /* background-color: rgba(249, 0, 0, 0.8); Set background color with 80% opacity */
+}
+
+/* Style for the timer container */
+.timerContainer {
+    position: fixed; /* Position the timer container relative to the viewport */
+    top: 90%; /* Position the container 50% from the top of the viewport */
+    left: 30%; /* Position the container 50% from the left of the viewport */
+    transform: translateX(50%); /* Move the container to the right by 50% of its width */
+    z-index: 9999; /* Ensure the timer appears above other elements */
+}

@@ -8,28 +8,34 @@
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
-
-  <style>
-    /* Style for the counters */
-    .counter-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 10px;
-    }
-  </style>
 </head>
 <body>
   <video id="video" width="600" height="450" autoplay></video>
-  
   <!-- Counter container -->
   <div class="counter-container">
-    <h3>Locked inness</h3>
+    <h3>Locked in or nah</h3>
     <p>Locked in: <span id="face-detected-count">0</span></p>
     <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
     <p>Locked in %: <span id="locked-in-percentage">0</span></p>
   </div>
+
+<div class="timerContainer">
+  <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
+  <div class="buttons">
+    <button id="buttons" onclick="pauseTimer()">Pause</button>
+    <button id="buttons" onclick="startTimer()">Start</button>
+    <button id="buttons" onclick="resetTimer()">Reset</button>
+    <button id="startButton">Start Detection</button>
+    <button id="stopButton">Stop Detection</button>
+  </div>
+</div>
+
+<!-- <div class="containerFACE">
+  <div class="face-efficiency-percentage" id="efficiencyNCV">00.00%</div>
+</div> -->
+
+<script type='text/javascript' src='/FaceRec/timerScript.js'></script>
+<!-- <script type='text/javascript' src='effiencyNCV.js'></script> -->
+
 </body>
 </html>
