@@ -1,8 +1,5 @@
-.landscapeFlexBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 70px;
+.video-projection {
+    top: 50px
 }
 
 .counter-container {
