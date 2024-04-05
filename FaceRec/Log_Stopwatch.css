@@ -16,16 +16,30 @@
 
 .timelog-container {
     position: absolute;
-    top: 500px; /* Adjust as needed */
-    left: 800px; /* Adjust as needed */
+    top: 180px; /* Adjust as needed */
+    left: 900px; /* Adjust as needed */
     width: 100px; /* Example width */
     height: 100px; /* Example height */
 }
 
 .Mediabuttons {
     position: absolute;
+    margin-left: 10px;
     top: 180px; /* Adjust as needed */
-    left: 700px; /* Adjust as needed */
-    width: 100px; /* Example width */
-    height: 100px; /* Example height */
+    left: 635px; /* Adjust as needed */
+    display: flex; /* Added to make the buttons align horizontally */
+    flex-direction: column; /* Added to stack the buttons vertically */
+    align-items: flex-start; /* Added to align the buttons to the left */
+}
+
+.functionButtons {
+    height: 75px;
+    width: 100px; /* Adjust as needed */
+    margin-bottom: 10px; /* Added to create space between buttons */
+}
+
+.timeLogconsole {
+    position: absolute;
+    left: 200px; /* Adjust as needed */
+    top: -100px; /* Adjust as needed */
 }

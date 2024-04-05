@@ -22,17 +22,15 @@
     <p>Focus %: <span id="locked-in-percentage">0</span></p>
   </div>
 
-<div class="timerContainer">
-  <div class="Mediabuttons">
-    <!-- <button id="buttons" onclick="pauseTimer()">Pause</button>
-    <button id="buttons" onclick="startTimer()">Start</button>
-    <button id="buttons" onclick="resetTimer()">Reset</button> -->
-    <button id="startButton" onclick="startTimer_onClick()">Start Study Session</button>
-    <button id="pauseButton" onclick="pauseTimer()">Pause</button>
-    <button id="resetButton" onclick="resetTimer()">Reset Board</button>
-    <button id="logButton">Log Study Session</button>
-  <div>    
-    <div id="timelog-container">
+  <div class="timerContainer">
+    <div class="Mediabuttons">
+      <div><button class=functionButtons id="startButton" onclick="startTimer_onClick()">Start</button></div>
+      <div><button class=functionButtons id="pauseButton" onclick="pauseTimer()">Pause</button></div>
+      <div><button class=functionButtons id="resetButton" onclick="resetTimer()">Reset</button></div>
+      <div><button class=functionButtons id="logButton">Log</button></div>
+  <div>
+
+  <div class=timeLogconsole id="timelog-container">
       <h3>Time Log</h3>
       <table id="timelog-table">
         <tr>
@@ -43,10 +41,6 @@
       </table>
     </div>
   </div>
-</div>
-
-
-
 
 
 <script type='text/javascript' src='/FaceRec/timerScript.js'></script>
