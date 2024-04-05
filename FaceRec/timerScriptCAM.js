@@ -49,6 +49,6 @@ function resetTimer() {
 
   clearInterval(eTimer);
   percentageDec = 0;
-  efficiencyNCV.innerHTML = "100:00%";
+  efficiencyNCV.innerHTML = "100.00%";
   timerRunning = false;
 }
