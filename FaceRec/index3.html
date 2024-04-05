@@ -18,7 +18,7 @@
     .counter-container {
       position: fixed;
       top: 200px;
-      right: 20px;
+      right: 190px;
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
       padding: 10px;
@@ -62,12 +62,6 @@
   <video id="video" width="600" height="450" autoplay></video>
   
   <!-- Counter container -->
-  <div class="counter-container">
-    <h3>Locked inness</h3>
-    <p>Locked in: <span id="face-detected-count">0</span></p>
-    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
-    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
-  </div>
 
   <div class="navbarFlexboxLEFT">
     <div class="navbarButtons"><a href="homePage.html">Home Page</a></div>
@@ -92,10 +86,11 @@
 
   <div class="containerFACE">
     <div class="face-efficiency-percentage" id="efficiencyNCV">00.00%</div>
-    <div class="buttons">
-      <button id="buttons" onclick="pauseTimer()">Pause</button>
-      <button id="buttons" onclick="startTimer_onClick()">Start</button>
-      <button id="buttons" onclick="resetTimer()">Reset</button>
+    <div class="counter-container">
+      <h3>Locked inness</h3>
+      <p>Locked in: <span id="face-detected-count">0</span></p>
+      <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
+      <p>Locked in %: <span id="locked-in-percentage">0</span></p>
     </div>
   </div>
 
