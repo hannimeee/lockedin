@@ -19,7 +19,6 @@
 
 </head>
 <body>
-
   <div class="navbarFlexboxLEFT">
     <div class="navbarButtons"><a href="homePage.html">Home Page</a></div>
     <div style="flex: 1; justify-content: flex-end">
@@ -33,12 +32,18 @@
   </div>
 
   <div class="container">
+    <style>
+      body {background:rgb(24, 26, 26);}
+    </style>
     <canvas id="testChart"></canvas>
   </div>
   <script>
-    let testChart = document.getElementById('testChart').getContext('2d')
+    let testChart = document.getElementById('testChart').getContext('2d');
+    Chart.defaults.backgroundColor = 'rgb(24, 26, 26)'; //doesnt work lol
+    Chart.defaults.global.defaultFontColor = 'rgb(256, 256, 256)'; //makes text white???!!
+
     let chart1 = new Chart(testChart, {
-      type:'polarArea', //can be bar, hBar, pie, line, doughnut, radar as well
+      type:'line', //can be bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{    //test data set, to be replaced with lap times
         labels:['Session 1', 'Session 2', 'Session 3'],
         datasets:[{
