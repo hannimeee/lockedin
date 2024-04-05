@@ -1,60 +1,59 @@
-/* Set default styles for the body */
+
 body {
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-    width: 100vw; /* Set the width to 100% of the viewport width */
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    background-color:   rgb(255, 255, 255); /* Set background color*/
+    padding: 0; 
+    margin: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color:   rgb(255, 255, 255); 
 }
 
-/* Style for the canvas element (BLUEBOX)*/
+
 canvas {
-    position: absolute; /* Position canvas absolutely within its container */
+    position: absolute; 
 }
 
-/* Style for the counters */
+
 .counter-container {
-    position: fixed; /* Position the counter container relative to the viewport */
-    top: 50%; /* Position the container 5% from the top of the viewport */
-    right: 70%; /* Position the container 5% from the right of the viewport */
-    transform: translate(0%, -50%); /* Center the container both vertically and horizontally */
-    background-color: rgba(255, 255, 255, 0.5); /* Set background color with 50% opacity */
-    color: rgb(0, 0, 0); /* Set text color to white */
-    padding: 10px; /* Add padding to the container */
-    border-radius: 10px; /* Add rounded edges */
+    position: fixed; 
+    top: 50%; 
+    right: 70%; 
+    transform: translate(0%, -50%); 
+    background-color: rgba(255, 255, 255, 0.5); 
+    color: rgb(0, 0, 0); 
+    padding: 10px; 
+    border-radius: 10px; 
 }
 
 /* Style for the video element */
 video {
-    width: 80%; /* Set the width to 80% of the container */
-    max-width: 600px; /* Limit the maximum width to 600px */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 15px; /* Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
-    /* background-color: rgba(249, 0, 0, 0.8); Set background color with 80% opacity */
+    width: 80%; 
+    max-width: 600px; 
+    height: auto;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Style for the timer container */
+
 .timerContainer {
-    position: fixed; /* Position the timer container relative to the viewport */
-    top: 15%; /* Position the container 50% from the top of the viewport */
-    left: 35%; /* Position the container 50% from the left of the viewport */
-    transform: translateX(50%); /* Move the container to the right by 50% of its width */
-    z-index: 9999; /* Ensure the timer appears above other elements */
+    position: fixed; 
+    top: 15%; 
+    left: 35%; 
+    transform: translateX(50%);
+    z-index: 9999; 
 }
 
 .timerDisplay {
     /* Positioning */
-    position: absolute; /* Use absolute positioning */
-    top: 400%; /* Align to the vertical center of the screen */
-    left: 50%; /* Align to the horizontal center of the screen */
-    transform: translate(-50%, -50%); /* Move the box back by half of its width and height */
+    position: absolute; 
+    top: 400%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
     
-    /* Style */
-    font-family: Arial, sans-serif; /* Change font family */
-    font-size: 3em; /* Adjust font size */
-    color: #333; /* Change text color */
+
+    font-family: Arial, sans-serif; 
+    font-size: 3em; 
+    color: #333; 
 }

@@ -1,0 +1,93 @@
+:root {
+  --clr-1: #052b2f;
+  --clr-2: #073438;
+  --clr-3: #0e4b50;
+  --clr-4: #2d8f85;
+  --clr-5: #637c54;
+}
+
+body {
+  background: rgb(24, 26, 26);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbarFlexboxLEFT {
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgb(41, 39, 39);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0px
+}
+
+.navbarFlexboxRIGHT {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbarButtons {
+  font-weight: 550;
+  font-size: 1.12em;
+  background-color: rgb(24, 26, 26);
+  color: white;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.5em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  outline: none;
+  margin: 10px 10px;
+  position: relative; /* Add relative positioning */
+  overflow: hidden; /* Add overflow hidden */
+  transition: transform 0.25s ease, filter 0.25s ease; /* Combine transitions */
+}
+
+.navbarButtons:hover::before,
+.navbarButtons:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* Cover the entire button */
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  border-radius: 0.5em; /* Use em for consistency */
+  animation: rotation 5s linear infinite;
+  transform: translateY(5px);
+}
+
+.navbarButtons:hover::after {
+  filter: blur(3.5rem);
+}

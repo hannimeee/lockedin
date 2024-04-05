@@ -9,17 +9,30 @@
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
   <link rel="stylesheet" href="Log_Stopwatch.css">
+  <link rel="stylesheet" href="navBarFaceRecVersion.css"><link>
 </head>
 <body>
+
+  <div class="navbarFlexboxLEFT">
+    <div class="navbarButtons"><a href="homePage.html">Home Page</a></div>
+    <div style="flex: 1; justify-content: flex-end">
+      <div class="navbarFlexboxRIGHT">
+        <div class="navbarButtons"><a href="FaceRec/index3.html">Face Rec</a></div>
+        <div class="navbarButtons"><a href="settings_page.html">Settings</a></div>
+        <div class="navbarButtons"><a href="/FaceRec/index3.html">Camera View</a></div>
+        <div class="navbarButtons"><a href="graph.html">Graph View</a></div>
+      </div>
+    </div>
+  </div>
+
   <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
 
   <video id="video" width="600" height="450" autoplay></video>
   <!-- Counter container -->
   <div class="counter-container">
-    <h3>Focus</h3>
-    <p>Fcs Points: <span id="face-detected-count">0</span></p>
-    <p>Fcs Demerit: <span id="face-not-detected-count">0</span></p>
-    <p>Focus %: <span id="locked-in-percentage">0</span></p>
+    <p class="focusText">Focus Points: <span id="face-detected-count">0</span></p>
+    <p class="focusText">Focus Demerit: <span id="face-not-detected-count">0</span></p>
+    <p class="focusText">Focus Percentage: <span id="locked-in-percentage">0</span></p>
   </div>
 
   <div class="timerContainer">
