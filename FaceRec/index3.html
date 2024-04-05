@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,75 +8,36 @@
   <script defer src="/FaceRec/face-api.min.js"></script>
   <script defer src="/FaceRec/FaceVideo3.js"></script>
   <link rel="stylesheet" href="/FaceRec/style.css">
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .video-container {
-      position: relative;
-    }
-
-    #video {
-      width: 600px;
-      height: 450px;
-      margin-bottom: 20px;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: space-around;
-      width: 600px;
-      margin-bottom: 20px;
-    }
-
-    .timer-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    #timelog-container {
-      margin-left: 20px;
-    }
-  </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="video-container">
-      <video id="video" autoplay></video>
-      <div class="button-container">
-        <button id="startButton" onclick="startTimer()">Start Study Session</button>
-        <button id="pauseButton" onclick="pauseTimer()">Pause</button>
-        <button id="resetButton" onclick="resetTimer()">Reset Board</button>
-        <button id="logButton">Log Study Session</button>
-      </div>
-    </div>
-    <div class="timer-container">
-      <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
-      <div class="counter-container">
-        <h3>Locked in or nah</h3>
-        <p>Locked in: <span id="face-detected-count">0</span></p>
-        <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
-        <p>Locked in %: <span id="locked-in-percentage">0</span></p>
-      </div>
-      <div id="timelog-container">
-        <h3>Time Log</h3>
-        <table id="timelog-table">
-          <tr>
-            <th>Time In</th>
-            <th>Time Out</th>
-            <th>Efficiency (%)</th>
-          </tr>
-        </table>
-      </div>
-    </div>
+  <video id="video" width="600" height="450" autoplay></video>
+  <!-- Counter container -->
+  <div class="counter-container">
+    <h3>Locked in or nah</h3>
+    <p>Locked in: <span id="face-detected-count">0</span></p>
+    <p>Not Locked in: <span id="face-not-detected-count">0</span></p>
+    <p>Locked in %: <span id="locked-in-percentage">0</span></p>
   </div>
 
-  <script type='text/javascript' src='/FaceRec/timerScript.js'></script>
-</body>
+<div class="timerContainer">
+  <div class="timerDisplay" id="timerDisplay">00:00:00:00</div>
+  <div class="buttons">
+    <!-- <button id="buttons" onclick="pauseTimer()">Pause</button>
+    <button id="buttons" onclick="startTimer()">Start</button>
+    <button id="buttons" onclick="resetTimer()">Reset</button> -->
+    <button id="startButton" onclick="startTimer()">Start Study Session</button>
+    <button id="pauseButton" onclick="pauseTimer()">Pause</button>
+    <button id="resetButton" onclick="resetTimer()">Reset Board</button>
+    <button id="logButton">Log Study Session</button>
+    <p>Time Log: <span id="timelog-container">0</span></p>
+  </div>
+</div>
 
+<p>Time Log: <span id="timelog-container"></span></p>
+
+
+<script type='text/javascript' src='/FaceRec/timerScript.js'></script>
+<!-- <script type='text/javascript' src='effiencyNCV.js'></script> -->
+
+</body>
 </html>
