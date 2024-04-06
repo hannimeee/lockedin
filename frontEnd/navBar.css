@@ -5,6 +5,10 @@
     --clr-4: #2d8f85;
     --clr-5: #637c54;
   }
+
+  a {
+    text-decoration: none;
+  }
   
   @property --gradient-angle {
     syntax: "<angle>";
@@ -76,7 +80,7 @@
       var(--clr-4),
       var(--clr-3)
     );
-    border-radius: 0.5em; /* Use em for consistency */
+    border-radius: 0.5em; 
     animation: rotation 5s linear infinite;
     transform: translateY(5px);
   }
