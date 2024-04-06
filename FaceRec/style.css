@@ -1,0 +1,59 @@
+
+body {
+    padding: 0; 
+    margin: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color:   rgb(255, 255, 255); 
+}
+
+
+canvas {
+    position: absolute; 
+}
+
+
+.counter-container {
+    position: fixed; 
+    top: 50%; 
+    right: 70%; 
+    transform: translate(0%, -50%); 
+    background-color: rgba(255, 255, 255, 0.5); 
+    color: rgb(0, 0, 0); 
+    padding: 10px; 
+    border-radius: 10px; 
+}
+
+/* Style for the video element */
+video {
+    width: 80%; 
+    max-width: 600px; 
+    height: auto;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+.timerContainer {
+    position: fixed; 
+    top: 15%; 
+    left: 35%; 
+    transform: translateX(50%);
+    z-index: 9999; 
+}
+
+.timerDisplay {
+    /* Positioning */
+    position: absolute; 
+    top: 400%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    
+
+    font-family: Arial, sans-serif; 
+    font-size: 3em; 
+    color: #333; 
+}

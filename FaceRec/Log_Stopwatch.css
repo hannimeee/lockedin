@@ -1,0 +1,122 @@
+.functionButtons {
+    font-weight: 550;
+    font-size: 1.12em;
+    background-color: rgb(41, 39, 39);
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+    margin: 10px 10px;
+}
+
+.timerDisplay {
+    font-weight: 550;
+    font-size: 2.3em;
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+    margin: 10px 10px;
+}
+
+.focusVars {
+    font-weight: 550;
+    font-size: 1.12em;
+    background-color: rgb(41, 39, 39);
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+    margin: 10px 10px;
+}
+
+.timeLogconsole {
+    font-weight: 550;
+    font-size: 1.12em;
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+    margin: 10px 10px;
+    background-color: rgb(24, 26, 26);
+}
+.focusText {
+    font-weight: 550;
+    font-size: 1.12em;
+    color: white;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border-radius: 0.5em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s;
+    margin: 10px 10px;
+    background-color: rgb(24, 26, 26);
+}
+
+.counter-container {
+    background-color: rgb(24, 26, 26)
+}
+
+.timerDisplay {
+    position: absolute;
+    top: 340px; 
+    left: 199px; 
+    width: 100px; 
+    height: 100px; 
+}
+
+.counter-container {
+    position: absolute;
+    top: 460px; 
+    left: 204px; 
+    width: 100px; 
+    height: 100px; 
+}
+
+.timelog-container {
+    position: absolute;
+    top: 180px; 
+    left: 900px; 
+    width: 100px; 
+    height: 100px; 
+}
+
+.Mediabuttons {
+    position: absolute;
+    margin-left: 10px;
+    top: 145px; 
+    left: 635px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+
+.functionButtons {
+    height: 75px;
+    width: 100px; 
+    margin-bottom: 10px; 
+}
+
+.timeLogconsole {
+    position: absolute;
+    left: 200px; 
+    top: -100px; 
+}
