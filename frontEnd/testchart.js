@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let chart1 = new Chart(testChart, {
     type:'line',
     data:{
-        labels:['Lap 1', 'Lap 2', 'Lap 3', 'Lap 4', 'Lap 5'],
+        labels:['Log 1', 'Log 2', 'Log 3', 'Log 4', 'Log 5'],
         datasets:[{
         label:'Efficiency',
         data: timeArray,
