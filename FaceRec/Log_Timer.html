@@ -55,6 +55,60 @@
     </div>
   </div>
 
+  <input type="file" id="csvFile" accept=".csv">
+  <button id="uploadButton">Upload CSV</button>
+
+  <script>
+    document.getElementById('uploadButton').addEventListener('click', async () => {
+      const fileInput = document.getElementById('csvFile');
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('http://localhost:3000/upload-csv', {
+          method: 'POST',
+          body: formData
+        });
+        if (response.ok) {
+          console.log('CSV file uploaded successfully.');
+        } else {
+          console.error('Failed to upload CSV file.');
+        }
+      } catch (error) {
+        console.error('Error uploading CSV file:', error);
+      }
+    });
+  </script>
+    <script>
+      // Example time log data
+      const timeLogData = {
+        currentTimeIn: '2024-04-06 09:00:00',
+        currentTimeOut: '2024-04-06 17:00:00',
+        efficiency: 85,
+      };
+  
+      // Make a POST request to the backend
+      fetch('http://localhost:3000/timelog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(timeLogData),
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Time log data sent successfully.');
+        } else {
+          console.error('Failed to send time log data.');
+        }
+      })
+      .catch(error => {
+        console.error('Error sending time log data:', error);
+      });
+    </script>
 
 <script type='text/javascript' src='/FaceRec/timerScript.js'></script>
 <!-- <script type='text/javascript' src='effiencyNCV.js'></script> -->
