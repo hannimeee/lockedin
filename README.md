@@ -1,6 +1,6 @@
 # LockedIn: Revolutionize Your Study Sessions
 
-Welcome to LockedIn, the next level in study efficiency that employs cutting-edge technology to help you maximize your study sessions. With a focus on real-time engagement tracking through facial recognition, LockedIn is designed to transform how you study, ensuring every minute spent is effective.
+Welcome to LockedIn, the next level of study efficiency that employs cutting-edge technology to help you maximize your study sessions. With a focus on real-time engagement tracking through facial recognition, LockedIn is designed to transform how you study, ensuring every minute spent is effective.
 
 ## Introduction
 
@@ -8,7 +8,7 @@ Have you ever spent countless hours studying, only to find that you've made litt
 
 ### The Problem
 
-Studying for long hours but achieving minimal progress is a common issue. Existing solutions like the Forest app encourage focus but rely heavily on self-reporting, which doesn't accurately measure actual time spent focusing.
+Studying for long hours but achieving minimal progress is a common issue. Existing solutions like the Forest app encourage focus but rely heavily on self-reporting, which doesn't accurately measure the actual time spent focusing.
 
 ### Our Solution
 
@@ -36,7 +36,8 @@ LockedIn offers a unique approach by combining a minimalist and user-friendly de
 1. Clone this repository.
 2. Open the `homePage.html` file in your browser.
 3. Allow camera access to enable real-time facial recognition.
-4. Start improving your study efficiency today!
+4. Upload and replace the PNG file in the user folder in the FaceRec folder. This picture will be used for facial recognition. Each user only needs to upload one straight-face PNG file.
+5. Start improving your study efficiency today!
 
 ## Design Choice
 
@@ -48,7 +49,7 @@ The chart display feature is currently a proof of concept and is not fully imple
 
 ## Security and Privacy
 
-Your privacy is our top priority. LockedIn operates entirely offline, ensuring your data is secure and inaccessible by external parties.
+Your privacy is our top priority. LockedIn operates entirely offline, ensuring your data is secure and inaccessible to external parties.
 
 ## Contributing
 
