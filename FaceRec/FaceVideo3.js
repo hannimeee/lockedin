@@ -201,7 +201,7 @@ function timeOut(efficiency) {
   // Call displayTimelog to update the log display
   displayTimelog();
 }
-export const timeArray = timelog;
+//*****DONT DELETE**** export const timeArray = timelog; - unused, would be for
 function displayTimelog() {
   const logs = timelog; // Retrieve the array of timelog objects
   const container = document.getElementById('timelog-container');
