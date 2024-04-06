@@ -198,15 +198,13 @@ function timeOut(efficiency) {
     currentTimeOut: formattedOut,
     efficiency: efficiency
   });
-
   // Call displayTimelog to update the log display
   displayTimelog();
 }
-
+export const timeArray = timelog;
 function displayTimelog() {
   const logs = timelog; // Retrieve the array of timelog objects
   const container = document.getElementById('timelog-container');
-
   // Create a table or any other structure to display the timelog entries
   const table = document.createElement('table');
   if (timelog.length == 1){
@@ -221,7 +219,6 @@ function displayTimelog() {
 
   if (logs.length > 0) {
     const lastLog = logs[logs.length - 1]; // Access the last item in the array
-    
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${lastLog.currentTimeIn}</td>
