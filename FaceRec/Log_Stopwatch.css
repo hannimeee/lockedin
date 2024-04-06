@@ -102,7 +102,7 @@
 .Mediabuttons {
     position: absolute;
     margin-left: 10px;
-    top: 180px; 
+    top: 145px; 
     left: 635px; 
     display: flex; 
     flex-direction: column; 
