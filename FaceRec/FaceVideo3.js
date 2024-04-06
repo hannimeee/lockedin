@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     resetButton.disabled = true; // Disable reset button when detection starts
     startRecordingWithFaceDetection();
     isDetectionStarted = true; // Set detection started flag to true
-    startButton.textContent = 'Resume'; // Change button text to 'Resume'
+    startButton.textContent = 'Res'; 
   });
 
   pauseButton.addEventListener('click', () => {
