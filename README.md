@@ -34,7 +34,7 @@ LockedIn offers a unique approach by combining a minimalist and user-friendly de
 ## Getting Started
 
 1. Clone this repository.
-2. Open the homePage.html file in Visual Studio Code and run it using the Live Server extension.
+2. Open the Log_Timer.html file in Visual Studio Code and run it using the Live Server extension.
 3. Allow camera access to enable real-time facial recognition.
 4. Upload and replace the PNG file in the user folder in the FaceRec folder. This picture will be used for facial recognition. Each user only needs to upload one straight-face PNG file.
 5. Start improving your study efficiency today!
@@ -46,6 +46,7 @@ We've opted for a minimalist design to make the app as intuitive and easy to use
 ## Note
 
 The chart display feature is currently a proof of concept and is not fully implemented.
+If you would like to try the non-camera mode, please run "homePage.html"
 
 ## Security and Privacy
 
