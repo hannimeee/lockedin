@@ -6,11 +6,11 @@ Finalist Pitch: https://www.facebook.com/watch/live/?extid=CL-UNK-UNK-UNK-IOS_GK
 Video Pitch: https://devpost.com/software/lockedin-yi73xd
 
 Team Members:
-Anshul Godhani (https://www.linkedin.com/in/agodhani/)
-Hannah Luo (https://www.linkedin.com/in/hannah-l-77a806254/)
-Leo Wang (https://www.linkedin.com/in/leo-wang-0b68bb273/)
-Dorn Kasikumpaiboon (https://www.linkedin.com/in/dornkasikumpaiboon/)
-Surya Sathyamurthy (https://www.linkedin.com/in/surya-sathyamurthy-605722217/)
+Anshul Godhani (https://www.linkedin.com/in/agodhani/) | 
+Hannah Luo (https://www.linkedin.com/in/hannah-l-77a806254/) | 
+Leo Wang (https://www.linkedin.com/in/leo-wang-0b68bb273/) | 
+Dorn Kasikumpaiboon (https://www.linkedin.com/in/dornkasikumpaiboon/) |  
+Surya Sathyamurthy (https://www.linkedin.com/in/surya-sathyamurthy-605722217/) |  
 
 Welcome to LockedIn, the next level of study efficiency that employs cutting-edge technology to help you maximize your study sessions. With a focus on real-time engagement tracking through facial recognition, LockedIn is designed to transform how you study, ensuring every minute spent is effective.
 
