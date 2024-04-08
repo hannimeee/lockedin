@@ -1,5 +1,6 @@
 # LockedIn: Codebrew 2024 Emerging Technology Winner Project
 
+Pitch: https://www.facebook.com/watch/live/?extid=CL-UNK-UNK-UNK-IOS_GK0T-GK1C&mibextid=ytq1xL&ref=watch_permalink&v=439009678614336 (Time Stamp - 7:56)
 Welcome to LockedIn, the next level of study efficiency that employs cutting-edge technology to help you maximize your study sessions. With a focus on real-time engagement tracking through facial recognition, LockedIn is designed to transform how you study, ensuring every minute spent is effective.
 
 ## Introduction
