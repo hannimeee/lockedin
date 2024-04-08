@@ -1,7 +1,8 @@
 # LockedIn: Codebrew X Cissa Hackathon 2024 Emerging Technology Winner Project
 
+Finalist Pitch: https://www.youtube.com/watch?v=1AcCg4nhS8g
+
 Hackathon Details: https://codebrew-2024.devpost.com/ + https://codebrew.cissa.org.au/
-Finalist Pitch: https://www.facebook.com/watch/live/?extid=CL-UNK-UNK-UNK-IOS_GK0T-GK1C&mibextid=ytq1xL&ref=watch_permalink&v=439009678614336 (Time Stamp - 7:56)
 
 Video Pitch: https://devpost.com/software/lockedin-yi73xd
 
